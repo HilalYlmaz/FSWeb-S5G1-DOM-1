@@ -43,3 +43,40 @@ console.log('Proje açıldı!')
 
 
 /* Kodlar Buradan aşağıya */
+const menu=document.querySelectorAll("nav a");
+menu.forEach((item, index)=>{
+  item.textContent = siteContent.nav[`nav-item-${index+1}`]
+  item.classList.add("italic");
+});
+document.getElementById("logo-img").src = siteContent["images"]["logo-img"];
+
+const ctaTxt = document.querySelector("div h1");
+ctaTxt.textContent= siteContent.cta.h1;
+
+const ctaBtn = document.querySelector("div button");
+ctaBtn.textContent= siteContent.cta.button;
+
+document.getElementById("cta-img").src = siteContent["images"]["cta-img"];
+
+const txtContent = document.querySelectorAll(".text-content");
+let index= 0;
+for ( let i = 0; i < txtContent.length; i++){
+  txtContent[i].children[0].textContent= Object.values(siteContent["ana-içerik"])[index];
+  index +=1;
+  txtContent[i].children[1].textContent= Object.values(siteContent["ana-içerik"])[index];
+  index+=1;
+}
+
+const contact = document.querySelector(".contact");
+const contactData = Object.values(siteContent.iletisim);
+[...contact.children].map((item,index)=>{
+  contact.children[index].textContent=contactData[index];
+})
+document.getElementById("middle-img").src = siteContent["images"]["accent-img"];
+
+
+
+  
+const footer= document.querySelector(" footer a");
+footer.textContent= siteContent.footer.copyright;
+footer.classList.add("bold");
